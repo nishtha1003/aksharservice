@@ -44,9 +44,25 @@ export default function Inquiry() {
   const handleSubmit = async (e: React.MouseEvent) => {
     e.preventDefault()
     if (!validate()) return
-    
+
     setStatus('loading')
-    await new Promise((r) => setTimeout(r, 1500))
+    await new Promise((r) => setTimeout(r, 800))
+
+    // Build WhatsApp message with all form details
+    const msg = [
+      `🔧 *New Service Inquiry - Akshar Service*`,
+      ``,
+      `👤 *Name:* ${form.name}`,
+      `📞 *Phone:* ${form.phone}`,
+      form.email ? `📧 *Email:* ${form.email}` : null,
+      form.subject ? `📌 *Subject:* ${form.subject}` : null,
+      form.description ? `📝 *Description:* ${form.description}` : null,
+    ]
+      .filter(Boolean)
+      .join('\n')
+
+    const waUrl = `https://wa.me/+919998996329?text=${encodeURIComponent(msg)}`
+    window.open(waUrl, '_blank')
     setStatus('success')
   }
 

@@ -34,7 +34,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <a href="/" className="flex items-center gap-3 group">
-            <Image src="/logo.jpg" alt="Akshar Service Logo" width={180} height={60} className="object-contain h-10 w-auto" />
+            <Image src="/logo.jpg" alt="Akshar Service Logo" width={220} height={70} className="object-contain h-14 w-auto" />
           </a>
 
           {/* Desktop Links */}

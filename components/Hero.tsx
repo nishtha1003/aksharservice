@@ -1,5 +1,5 @@
 'use client'
-import { Phone, CheckCircle, Wrench, Shield, Zap } from 'lucide-react'
+import { Wrench, Shield } from 'lucide-react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, EffectFade, Pagination } from 'swiper/modules'
 import 'swiper/css'
@@ -20,7 +20,7 @@ const slides = [
   {
     title: '100% Genuine Spare Parts',
     subtitle: 'We only use authentic parts to ensure the longevity and performance of your appliance.',
-    image: 'https://images.unsplash.com/photo-1610557892470-55d9e80c0eb7?auto=format&fit=crop&w=1920&q=80',
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1920&q=80',
   }
 ]
 
@@ -31,34 +31,39 @@ export default function Hero() {
         <Swiper
           modules={[Autoplay, EffectFade, Pagination]}
           effect="fade"
+          fadeEffect={{ crossFade: true }}
           autoplay={{ delay: 5000, disableOnInteraction: false }}
           pagination={{ clickable: true }}
           loop={true}
-          className="h-full w-full"
+          className="h-full w-full hero-swiper"
         >
           {slides.map((slide, idx) => (
             <SwiperSlide key={idx}>
               <div className="h-full w-full flex items-center text-white relative">
-                {/* Full background image */}
-                <div className="absolute inset-0 z-0">
-                  <img src={slide.image} alt={slide.title} className="w-full h-full object-cover" />
+                {/* Full background image with Ken Burns zoom animation */}
+                <div className="absolute inset-0 z-0 overflow-hidden">
+                  <img
+                    src={slide.image}
+                    alt={slide.title}
+                    className="w-full h-full object-cover hero-img-zoom"
+                  />
                   {/* Dark teal overlay for readability */}
                   <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(4,47,46,0.92) 0%, rgba(4,47,46,0.75) 50%, rgba(4,47,46,0.3) 100%)' }} />
                 </div>
-                
+
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 grid lg:grid-cols-2 gap-12 items-center py-16">
-                  <div>
-                    <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2 text-sm font-medium mb-6">
+                  <div className="hero-content-anim">
+                    <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2 text-sm font-medium mb-6 hero-badge-anim">
                       <Shield size={14} className="text-yellow-300" />
                       #1 Washing Machine Service in Ahmedabad
                     </div>
-                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 hero-title-anim" style={{ fontFamily: 'Poppins, sans-serif' }}>
                       {slide.title}
                     </h1>
-                    <p className="text-brand-100 text-lg leading-relaxed mb-8 max-w-md">
+                    <p className="text-brand-100 text-lg leading-relaxed mb-8 max-w-md hero-sub-anim">
                       {slide.subtitle}
                     </p>
-                    <div className="flex flex-col sm:flex-row gap-4 mb-10">
+                    <div className="flex flex-col sm:flex-row gap-4 mb-10 hero-btns-anim">
                       <a href="/contact" className="btn-primary bg-white text-brand-700 hover:bg-brand-50 text-base px-8 py-3">
                         <Wrench size={18} /> Book a Repair
                       </a>

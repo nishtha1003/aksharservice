@@ -1,6 +1,6 @@
-import { Wrench, Phone, MessageCircle, Globe, Heart } from 'lucide-react'
+import { Phone, MessageCircle, Globe, Heart, MapPin, ArrowRight, Clock } from 'lucide-react'
 
-const navLinks = [
+const quickLinks = [
   { label: 'Home', href: '/' },
   { label: 'About Us', href: '/about' },
   { label: 'Services', href: '/services' },
@@ -10,27 +10,44 @@ const navLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-brand-900 text-brand-100 pb-24 lg:pb-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
-        <div className="grid md:grid-cols-3 gap-10 mb-10">
-          {/* Brand */}
-          <div>
-            <div className="flex items-center gap-3 mb-4">
-              <img src="/logo.jpg" alt="Akshar Service Logo" className="w-auto h-12 bg-white rounded-md p-1 object-contain" />
+    <footer className="footer-root">
+      {/* Top wave */}
+      <div className="footer-wave">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" className="w-full block">
+          <path fill="#042f2e" d="M0,30 C480,60 960,0 1440,30 L1440,60 L0,60 Z" />
+        </svg>
+      </div>
+
+      <div className="footer-body">
+        <div className="footer-grid">
+
+          {/* Brand Column */}
+          <div className="footer-brand-col">
+            <div className="footer-logo-wrap">
+              <img src="/logo.jpg" alt="Akshar Service Logo" className="footer-logo" />
             </div>
-            <p className="text-brand-300 text-sm leading-relaxed">
-              Reliable washing machine repair & servicing across Ahmedabad. 
+            <p className="footer-brand-desc">
+              Reliable washing machine repair &amp; servicing across Ahmedabad.
               Genuine parts, expert hands, your satisfaction guaranteed.
             </p>
+            <div className="footer-hours">
+              <Clock size={14} className="footer-hours-icon" />
+              <span>Mon – Sat: 9:00 AM – 7:00 PM</span>
+            </div>
+            <div className="footer-location">
+              <MapPin size={14} className="footer-hours-icon" />
+              <span>Serving all areas of Ahmedabad</span>
+            </div>
           </div>
 
-          {/* Links */}
-          <div>
-            <div className="font-bold text-white mb-4">Quick Links</div>
-            <ul className="grid grid-cols-2 gap-2">
-              {navLinks.map((l) => (
+          {/* Quick Links */}
+          <div className="footer-links-col">
+            <div className="footer-col-title">Quick Links</div>
+            <ul className="footer-links-list">
+              {quickLinks.map((l) => (
                 <li key={l.label}>
-                  <a href={l.href} className="text-brand-300 text-sm hover:text-white transition-colors">
+                  <a href={l.href} className="footer-link">
+                    
                     {l.label}
                   </a>
                 </li>
@@ -38,37 +55,61 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
-          <div>
-            <div className="font-bold text-white mb-4">Connect</div>
-            <div className="space-y-3">
-              <a href="tel:+919998996329" className="flex items-center gap-3 text-brand-300 hover:text-white transition-colors text-sm">
-                <Phone size={15} /> +91 99989 96329
+          {/* Connect Column */}
+          <div className="footer-connect-col">
+            <div className="footer-col-title">Get In Touch</div>
+            <div className="footer-contact-cards">
+              <a href="tel:+919998996329" className="footer-contact-card">
+                <span className="footer-contact-icon-wrap footer-icon-phone">
+                  <Phone size={16} />
+                </span>
+                <div>
+                  <div className="footer-contact-label">Call Us</div>
+                  <div className="footer-contact-value">+91 99989 96329</div>
+                </div>
               </a>
+
               <a
-                href="https://wa.me/+919998996329"
+                href="https://wa.me/+919998996329?text=Hi! I need washing machine repair service."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-brand-300 hover:text-white transition-colors text-sm"
+                className="footer-contact-card"
               >
-                <MessageCircle size={15} /> WhatsApp Us
+                <span className="footer-contact-icon-wrap footer-icon-wa">
+                  <MessageCircle size={16} />
+                </span>
+                <div>
+                  <div className="footer-contact-label">WhatsApp</div>
+                  <div className="footer-contact-value">Chat with us</div>
+                </div>
               </a>
+
               <a
                 href="https://aksharservice.bytecard.in"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-brand-300 hover:text-white transition-colors text-sm"
+                className="footer-contact-card"
               >
-                <Globe size={15} /> aksharservice.bytecard.in
+                <span className="footer-contact-icon-wrap footer-icon-web">
+                  <Globe size={16} />
+                </span>
+                <div>
+                  <div className="footer-contact-label">Website</div>
+                  <div className="footer-contact-value">aksharservice.bytecard.in</div>
+                </div>
               </a>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-brand-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-brand-400 text-sm">
-          <div>© 2026 Akshar Service. All rights reserved.</div>
-          <div className="flex items-center gap-1">
-            Made with <Heart size={13} className="text-red-400 mx-1" /> by AJ Infosoft
+        {/* Divider */}
+        <div className="footer-divider" />
+
+        {/* Bottom bar */}
+        <div className="footer-bottom">
+          <div className="footer-copy">&copy; 2026 Akshar Service. All rights reserved.</div>
+          <div className="footer-made-by">
+            Made with <Heart size={13} className="footer-heart" fill="currentColor" /> by AJ Infosoft
           </div>
         </div>
       </div>
